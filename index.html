@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitality Scale | Premium Hotel & Motel SMMA</title>
+    <style>
+        :root { --bg-dark: #0f0f12; --card-bg: #1a1a22; --accent: #d4af37; --text: #e1e1e6; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg-dark); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
+        header { background: rgba(15,15,18,0.95); border-bottom: 1px solid #2a2a35; padding: 20px; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 22px; font-weight: bold; color: var(--accent); letter-spacing: 1px; }
+        .hero { text-align: center; padding: 80px 20px; background: linear-gradient(rgba(15,15,18,0.8), rgba(15,15,18,0.95)), url('https://unsplash.com') no-repeat center center/cover; }
+        .hero h1 { font-size: 42px; margin-bottom: 10px; color: #fff; }
+        .hero p { font-size: 18px; max-width: 600px; margin: 0 auto 30px auto; color: #a1a1b2; }
+        .btn { background: var(--accent); color: #000; padding: 14px 28px; font-weight: bold; text-decoration: none; border-radius: 4px; display: inline-block; cursor: pointer; border: none; font-size: 16px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; color: var(--accent); font-size: 28px; margin-bottom: 40px; text-transform: uppercase; letter-spacing: 1px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 6px; border: 1px solid #2a2a35; }
+        .card h3 { color: #fff; margin-top: 0; }
+        .stat { font-size: 36px; font-weight: bold; color: var(--accent); margin-bottom: 10px; }
+        form { background: var(--card-bg); padding: 30px; border-radius: 6px; border: 1px solid #2a2a35; max-width: 500px; margin: 0 auto; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0 20px 0; background: #0f0f12; border: 1px solid #3a3a4c; color: #fff; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
+        footer { text-align: center; padding: 30px; border-top: 1px solid #2a2a35; color: #6a6a7a; margin-top: 60px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">HOSPITALITY SCALE</div>
+        <a href="#contact" class="btn" style="padding: 8px 16px; font-size: 14px;">Book Audit</a>
+    </header>
+
+    <div class="hero">
+        <h1>We Fill Hotel Rooms Using Social Media</h1>
+        <p>Direct bookings. Higher occupancy. Zero reliance on expensive third-party OTA commissions.</p>
+        <a href="#contact" class="btn">Scale Your Property</a>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Direct Booking Funnels</h3>
+                <p>Target travelers directly via paid Facebook & Instagram advertising, driving guests straight to your reservation portal.</p>
+            </div>
+            <div class="card">
+                <h3>Visual Content Production</h3>
+                <p>Cinematic Reels and TikTok production showcasing your property's rooms, amenities, dining, and stay experience.</p>
+            </div>
+            <div class="card">
+                <h3>Reputation Management</h3>
+                <p>Automated guest follow-up sequence to skyrocket your property’s review counts on TripAdvisor and Google Travel.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="background: #14141c; padding: 40px 20px; border-radius: 6px;">
+        <h2 class="section-title">Proven Case Studies</h2>
+        <div class="grid">
+            <div class="card" style="background: #1a1a24;">
+                <div class="stat">+42%</div>
+                <h3>Boutique Resort, Bali</h3>
+                <p>Shifted dependencies away from Booking.com, scaling direct platform bookings over an 85-day optimization sequence.</p>
+            </div>
+            <div class="card" style="background: #1a1a24;">
+                <div class="stat">6.4x ROI</div>
+                <h3>Metropolitan Motel, Austin</h3>
+                <p>Localized geo-targeted weekend getaway ad campaigns filled mid-week vacancy gaps during low-season cycles flawlessly.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="contact">
+        <h2 class="section-title">Schedule a Free Booking Audit</h2>
+        <form id="leadForm">
+            <label>Your Name</label>
+            <input type="text" id="name" required placeholder="John Doe">
+            
+            <label>Hotel / Motel Name</label>
+            <input type="text" id="property" required placeholder="Grand Plaza Hotel">
+            
+            <label>Email Address</label>
+            <input type="email" id="email" required placeholder="manager@property.com">
+            
+            <label>How can we help your property scale?</label>
+            <textarea id="message" rows="4" required placeholder="Tell us about your seasonal vacancy targets..."></textarea>
+            
+            <button type="submit" class="btn" style="width: 100%;">Request Free Audit 📈</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2026 Hospitality Scale Marketing Agency. All Rights Reserved.
+    </footer>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const propertyName = document.getElementById('property').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, propertyName, email, message })
+            });
+            const data = await response.json();
+            alert(data.message);
+            document.getElementById('leadForm').reset();
+        });
+    </script>
+</body>
+</html>
